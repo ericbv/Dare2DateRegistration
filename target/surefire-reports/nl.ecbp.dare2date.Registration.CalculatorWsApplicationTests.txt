@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: nl.ecbp.dare2date.Registration.CalculatorWsApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 18.259 sec <<< FAILURE! - in nl.ecbp.dare2date.Registration.CalculatorWsApplicationTests
+testSendingHolidayRequest(nl.ecbp.dare2date.Registration.CalculatorWsApplicationTests)  Time elapsed: 17.718 sec  <<< ERROR!
+org.springframework.ws.soap.client.SoapFaultClientException: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.exception.JDBCConnectionException: Could not open connection
+	at org.springframework.ws.soap.client.core.SoapFaultMessageResolver.resolveFault(SoapFaultMessageResolver.java:38)
+	at org.springframework.ws.client.core.WebServiceTemplate.handleFault(WebServiceTemplate.java:826)
+	at org.springframework.ws.client.core.WebServiceTemplate.doSendAndReceive(WebServiceTemplate.java:621)
+	at org.springframework.ws.client.core.WebServiceTemplate.sendAndReceive(WebServiceTemplate.java:555)
+	at org.springframework.ws.client.core.WebServiceTemplate.doSendAndReceive(WebServiceTemplate.java:506)
+	at org.springframework.ws.client.core.WebServiceTemplate.sendSourceAndReceiveToResult(WebServiceTemplate.java:446)
+	at org.springframework.ws.client.core.WebServiceTemplate.sendSourceAndReceiveToResult(WebServiceTemplate.java:436)
+	at org.springframework.ws.client.core.WebServiceTemplate.sendSourceAndReceiveToResult(WebServiceTemplate.java:424)
+	at nl.ecbp.dare2date.Registration.CalculatorWsApplicationTests.testSendingHolidayRequest(CalculatorWsApplicationTests.java:74)
+
