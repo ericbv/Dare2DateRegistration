@@ -17,11 +17,11 @@ import nl.ecbp.dare2date.Registration.entity.User;
 @Service
 public class WelcomeMandrilSender implements IWelcomeMailSender {
 	MandrillApi api;
+	
 	@Autowired
 	public WelcomeMandrilSender(MandrillApi mandril) {
 		api= mandril;
 	}
-	
 	
 	public void sendWelcomeMail(User user) {
 	   	MandrillMessage message = new MandrillMessage();
@@ -29,6 +29,7 @@ public class WelcomeMandrilSender implements IWelcomeMailSender {
     	message.setHtml("<h1>Welkom bij Dare2Date</h1><br />Hallo "+ user.getVoornaam()+" welkom bij dare2date!");
     	message.setFromEmail("testing@ecbp.nl");
     	message.setFromName("Testing @ ecbp");
+    	
     	// add recipients
     	ArrayList<Recipient> recipients = new ArrayList<Recipient>();
     	Recipient recipient = new Recipient();

@@ -24,7 +24,7 @@ public class ValidationSmsService implements IValidationSms {
 	}
 
 	@Override
-	public void sendValidationSms(User aUser) throws ValidationSmsException {
+	public void sendValidationSms(User aUser, String aCode) throws ValidationSmsException {
 		try {
 			TwilioRestClient client = new TwilioRestClient(accountSid, authToken);
 
@@ -35,7 +35,7 @@ public class ValidationSmsService implements IValidationSms {
 			String num = "+31" + aUser.getTelefoonnummer().replaceFirst("^(?!00[^0])0", "");
 			System.out.println("Sending to phone number: " + num);
 
-			params.add(new BasicNameValuePair("Body", "Hallo, uw validatie code is 1234"));
+			params.add(new BasicNameValuePair("Body", "Hallo, uw validatie code is " + aCode));
 			params.add(new BasicNameValuePair("To", num));
 			params.add(new BasicNameValuePair("From", "+14158141829"));
 

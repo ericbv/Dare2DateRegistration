@@ -1,6 +1,7 @@
 package nl.ecbp.dare2date.Registration;
 
 import nl.ecbp.dare2date.Registration.services.postcodecheck.PostcodeCheck;
+import nl.ecbp.dare2date.Registration.services.sms.ValidationSmsService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,4 +20,8 @@ public class ExternalServicesConfig {
 		return new MandrillApi("RH6Vb1EeBEA4jDG4vFidpw");
 	}
 	
+	@Bean
+	public ValidationSmsService smsValidation(){
+		return new ValidationSmsService("ACdabb481bad8286afbce789947cab0cbf", "803903d286e4850c8de1a2f131d138aa");
+	}
 }
