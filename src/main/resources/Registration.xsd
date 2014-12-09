@@ -62,7 +62,7 @@
     
     <xs:complexType name="AdresParameters">
         <xs:all>
-            <xs:element name="postcode" type="xs:int" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="postcode" type="xs:string" minOccurs="1" maxOccurs="1"/>
             <xs:element name="huisnr" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
         </xs:all>
     </xs:complexType>
