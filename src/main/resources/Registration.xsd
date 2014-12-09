@@ -1,6 +1,12 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:reg="http://www.han.nl/registration"
            targetNamespace="http://www.han.nl/registration">
-
+           
+	<xs:simpleType name="emailValidator">
+		<xs:restriction base="xs:string"> 
+			<xs:pattern value="[^@]+@[^\.]+\..+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
     <xs:element name="RegistrationDataRequest">
         <xs:complexType>
             <xs:sequence>
@@ -43,7 +49,7 @@
     
     <xs:complexType name="EmailParameters">
         <xs:all>
-            <xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="email" type="reg:emailValidator" minOccurs="1" maxOccurs="1"/>
         </xs:all>
     </xs:complexType>
     
@@ -57,7 +63,7 @@
     <xs:complexType name="AdresParameters">
         <xs:all>
             <xs:element name="postcode" type="xs:int" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="huisnr" type="xs:int" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="huisnr" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
         </xs:all>
     </xs:complexType>
 </xs:schema>
