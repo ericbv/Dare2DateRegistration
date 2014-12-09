@@ -26,7 +26,7 @@ public class WelcomeMandrilSender implements IWelcomeMailSender {
 	public void sendWelcomeMail(User user) {
 	   	MandrillMessage message = new MandrillMessage();
     	message.setSubject("Welkom bij dare2date");
-    	message.setHtml("<h1>Welkom bij Dare2Date</h1><br />Hallo "+ user.getVoornaam()+" welkom bij dare2date!");
+    	message.setHtml("<h1>Welkom bij Dare2Date</h1><br />Hallo "+ user.getVoornaam()+" welkom bij dare2date! uw straat" + user.getStraat() +"uw plaats" + user.getPlaats());
     	message.setFromEmail("testing@ecbp.nl");
     	message.setFromName("Testing @ ecbp");
     	

@@ -1,7 +1,43 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:reg="http://www.han.nl/registration" targetNamespace="http://www.han.nl/registration">
 
-	<!-- VERIFICATION -->
+	<!-- VERIFICATION COMPLETE -->
+	
+	<xs:element name="VerificationCompleteRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="input" type="reg:VerificationCompleteInput"
+					minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="VerificationCompleteInput">
+		<xs:all>
+			<xs:element name="userId" type="xs:long" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="verificationCode" type="xs:string"
+				minOccurs="0" maxOccurs="1"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="VerificationCompleteResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="reg:VerificationCompleteResult"
+					minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="VerificationCompleteResult">
+		<xs:all>
+			<xs:element name="success" type="xs:boolean" />
+			<xs:element name="message" type="xs:string" />
+		</xs:all>
+	</xs:complexType>
+
+	<!-- VERIFICATION START -->
 	
 	<xs:element name="VerificationStartRequest">
 		<xs:complexType>
