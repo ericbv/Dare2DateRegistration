@@ -1,82 +1,95 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:reg="http://www.han.nl/registration"
-           targetNamespace="http://www.han.nl/registration">
-    <xs:element name="RegistrationDataRequest">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="input" type="reg:RegistrationDataInput" minOccurs="1" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:reg="http://www.han.nl/registration" targetNamespace="http://www.han.nl/registration">
+	<xs:element name="RegistrationDataRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="input" type="reg:RegistrationDataInput"
+					minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
-    <xs:element name="RegistrationDataResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="result" type="reg:RegistrationDataResult" minOccurs="1" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+	<xs:element name="RegistrationDataResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="reg:RegistrationDataResult"
+					minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
-    <xs:complexType name="RegistrationDataResult">
-        <xs:all>
-            <xs:element name="message" type="xs:string"/>
-        </xs:all>
-    </xs:complexType>
+	<xs:complexType name="RegistrationDataResult">
+		<xs:all>
+			<xs:element name="message" type="xs:string" />
+		</xs:all>
+	</xs:complexType>
 
-    <xs:complexType name="RegistrationDataInput">
-        <xs:all>
-            <xs:element name="name" type="reg:NameParameters" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="email" type="reg:EmailParameters" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="phone" type="reg:PhoneParameters" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="adres" type="reg:AdresParameters" minOccurs="1" maxOccurs="1"/>
-        </xs:all>
-    </xs:complexType>
+	<xs:complexType name="RegistrationDataInput">
+		<xs:all>
+			<xs:element name="name" type="reg:NameParameters"
+				minOccurs="1" maxOccurs="1" />
+			<xs:element name="email" type="reg:EmailParameters"
+				minOccurs="1" maxOccurs="1" />
+			<xs:element name="phone" type="reg:PhoneParameters"
+				minOccurs="1" maxOccurs="1" />
+			<xs:element name="adres" type="reg:AdresParameters"
+				minOccurs="1" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
 
 
-    <xs:complexType name="NameParameters">
-         <xs:all>
-            <xs:element name="voornaam" type="xs:string" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="achternaam" type="xs:string" minOccurs="1" maxOccurs="1"/>
-        </xs:all>
-    </xs:complexType>
-    
-    <xs:complexType name="EmailParameters">
-        <xs:all>
-            <xs:element name="email" type="reg:Email" minOccurs="1" maxOccurs="1"/>
-        </xs:all>
-    </xs:complexType>
-    
-    <xs:complexType name="PhoneParameters">
-        <xs:all>
-            <xs:element name="phoneNumber" type="reg:Phone" minOccurs="1" maxOccurs="1"/>
-        </xs:all>
-    </xs:complexType>
-    
-    <xs:complexType name="AdresParameters">
-        <xs:all>
-            <xs:element name="postcode" type="reg:Postcode" minOccurs="1" maxOccurs="1"/>
-            <xs:element name="huisnr" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
-        </xs:all>
-    </xs:complexType>
+	<xs:complexType name="NameParameters">
+		<xs:all>
+			<xs:element name="voornaam" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="achternaam" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
 
- <xs:simpleType name="Phone">
-  <xs:restriction base="xs:string">
-   <xs:pattern value="(((0)[1-9]{2}[0-9][-]?[1-9][0-9]{5})|((\\+31|0|0031)[1-9][0-9][-]?[1-9][0-9]{6}))|(((\\+31|0|0031)6){1}[-]?[1-9]{1}[0-9]{7})" />
-  </xs:restriction>
- </xs:simpleType>
+	<xs:complexType name="EmailParameters">
+		<xs:all>
+			<xs:element name="email" type="reg:Email" minOccurs="1"
+				maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
 
- <xs:simpleType name="Email">
-  <xs:restriction base="xs:string">
-   <xs:pattern value="[^@]+@[^\.]+\..+" />
-        <xs:maxLength value="254"/>
-  </xs:restriction>
- </xs:simpleType>
+	<xs:complexType name="PhoneParameters">
+		<xs:all>
+			<xs:element name="phoneNumber" type="reg:Phone" minOccurs="1"
+				maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
 
- <xs:simpleType name="Postcode">
-  <xs:restriction base="xs:string">
-        <xs:whiteSpace value="collapse"/>
-   <xs:pattern value="[1-9][0-9]{3}[\s]?[A-Za-z]{2}" />
-        <xs:minLength value="6"/>
-        <xs:maxLength value="7"/>
-  </xs:restriction>
- </xs:simpleType>
+	<xs:complexType name="AdresParameters">
+		<xs:all>
+			<xs:element name="postcode" type="reg:Postcode" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="huisnr" type="xs:positiveInteger"
+				minOccurs="1" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:simpleType name="Phone">
+		<xs:restriction base="xs:string">
+			<xs:pattern
+				value="(((0)[1-9]{2}[0-9][-]?[1-9][0-9]{5})|((\\+31|0|0031)[1-9][0-9][-]?[1-9][0-9]{6}))|(((\\+31|0|0031)6){1}[-]?[1-9]{1}[0-9]{7})" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Email">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^@]+@[^\.]+\..+" />
+			<xs:maxLength value="254" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Postcode">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse" />
+			<xs:pattern value="[1-9][0-9]{3}[\s]?[A-Za-z]{2}" />
+			<xs:minLength value="6" />
+			<xs:maxLength value="7" />
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
