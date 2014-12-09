@@ -23,18 +23,18 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return new ServletRegistrationBean(servlet, "/ws/*");
     }
 
-    @Bean(name = "calculator")
+    @Bean(name = "registration")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("CalculatorPort");
-        wsdl11Definition.setLocationUri("/calculatorservice/");
-        wsdl11Definition.setTargetNamespace("http://www.han.nl/calculator");
+        wsdl11Definition.setPortTypeName("RegistrationPort");
+        wsdl11Definition.setLocationUri("/registrationservice/");
+        wsdl11Definition.setTargetNamespace("http://www.han.nl/registration");
         wsdl11Definition.setSchema(countriesSchema);
         return wsdl11Definition;
     }
 
     @Bean
     public XsdSchema countriesSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("calculator.xsd"));
+        return new SimpleXsdSchema(new ClassPathResource("Registration.xsd"));
     }
 }
