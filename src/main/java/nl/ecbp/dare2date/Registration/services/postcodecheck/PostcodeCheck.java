@@ -17,11 +17,9 @@ import com.google.gson.JsonParser;
 
 public class PostcodeCheck {
 	private String apiKey;
-	private HttpClient http;
 
 	public PostcodeCheck(String anApiKey) {
 		this.apiKey = anApiKey;
-		this.http = HttpClients.custom().build();
 	}
 
 	public PostcodeCheckResponse doCheck(String aPostcode, int aHouseNumber) throws PostcodeCheckException {
@@ -30,6 +28,7 @@ public class PostcodeCheck {
 		System.out.println("executing request" + httpget.getRequestLine());
 
 		try {
+			HttpClient http = HttpClients.custom().build();
 			HttpResponse httpResponse = http.execute(httpget);
 			HttpEntity httpEntity = httpResponse.getEntity();
 
