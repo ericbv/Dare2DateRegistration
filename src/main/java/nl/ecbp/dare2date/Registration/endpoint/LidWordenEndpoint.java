@@ -1,8 +1,6 @@
 package nl.ecbp.dare2date.Registration.endpoint;
 
 import nl.ecbp.dare2date.Registration.*;
-import nl.ecbp.dare2date.Registration.entity.Calculation;
-import nl.ecbp.dare2date.Registration.entity.CalculationRepository;
 import nl.ecbp.dare2date.Registration.entity.User;
 import nl.ecbp.dare2date.Registration.entity.UserRepository;
 import nl.ecbp.dare2date.Registration.gateway.IMoviePrinter;
@@ -17,7 +15,6 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import java.math.BigInteger;
-import java.util.List;
 
 @Endpoint
 public class LidWordenEndpoint {
@@ -56,8 +53,7 @@ public class LidWordenEndpoint {
 	
 			RegistrationDataResult result = new RegistrationDataResult();
 			result.setMessage("ID of the newly created user "
-					+ registerdUser.getId());
-			result.setValue(1);
+					+ registerdUser.getId() +" Street and Townname are:" + straat + " " + plaats );
 			RegistrationDataResponse resp = new RegistrationDataResponse();
 			resp.setResult(result);
 	
@@ -66,7 +62,6 @@ public class LidWordenEndpoint {
 		} catch (PostcodeCheckException e) {
 			RegistrationDataResult result = new RegistrationDataResult();
 			result.setMessage("Invalid postcode");
-			result.setValue(1);
 			RegistrationDataResponse resp = new RegistrationDataResponse();
 			resp.setResult(result);
 
