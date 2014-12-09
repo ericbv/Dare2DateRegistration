@@ -1,5 +1,40 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:reg="http://www.han.nl/registration" targetNamespace="http://www.han.nl/registration">
+
+
+	<xs:element name="VerificationStartRequestRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="input" type="reg:RegistrationDataInput"
+					minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="VerificationStartRequestResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="reg:RegistrationDataResult"
+					minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="VerificationStartResult">
+		<xs:all>
+			<xs:element name="message" type="xs:string" />
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="VerificationStartInput">
+		<xs:all>
+			<xs:element name="huisnr" type="xs:positiveInteger"
+				minOccurs="1" maxOccurs="1" />
+		</xs:all>
+	</xs:complexType>
+
+
+
 	<xs:element name="RegistrationDataRequest">
 		<xs:complexType>
 			<xs:sequence>
