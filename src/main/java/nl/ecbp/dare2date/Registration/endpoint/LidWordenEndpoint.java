@@ -34,7 +34,7 @@ public class LidWordenEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "RegistrationDataRequest")
 	@ResponsePayload
-	public RegistrationDataResponse calculateSumForName(
+	public RegistrationDataResponse register(
 			@RequestPayload RegistrationDataRequest req) {
 		try {
 			String voornaam =  req.getInput().getName().getVoornaam();
@@ -70,4 +70,5 @@ public class LidWordenEndpoint {
 		
 	
 	}
+	
 }
