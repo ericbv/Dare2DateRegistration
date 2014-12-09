@@ -1,12 +1,5 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:reg="http://www.han.nl/registration"
            targetNamespace="http://www.han.nl/registration">
-           
-	<xs:simpleType name="emailValidator">
-		<xs:restriction base="xs:string"> 
-			<xs:pattern value="[^@]+@[^\.]+\..+"/>
-		</xs:restriction>
-	</xs:simpleType>
-	
     <xs:element name="RegistrationDataRequest">
         <xs:complexType>
             <xs:sequence>
@@ -25,7 +18,6 @@
 
     <xs:complexType name="RegistrationDataResult">
         <xs:all>
-            <xs:element name="value" type="xs:int"/>
             <xs:element name="message" type="xs:string"/>
         </xs:all>
     </xs:complexType>
@@ -49,21 +41,42 @@
     
     <xs:complexType name="EmailParameters">
         <xs:all>
-            <xs:element name="email" type="reg:emailValidator" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="email" type="reg:Email" minOccurs="1" maxOccurs="1"/>
         </xs:all>
     </xs:complexType>
     
     <xs:complexType name="PhoneParameters">
         <xs:all>
-            <xs:element name="phoneNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="phoneNumber" type="xs:Phone" minOccurs="1" maxOccurs="1"/>
         </xs:all>
     </xs:complexType>
-    
     
     <xs:complexType name="AdresParameters">
         <xs:all>
-            <xs:element name="postcode" type="xs:int" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="postcode" type="reg:Postcode" minOccurs="1" maxOccurs="1"/>
             <xs:element name="huisnr" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
         </xs:all>
     </xs:complexType>
+
+	<xs:simpleType name="Phone">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(((0)[1-9]{2}[0-9][-]?[1-9][0-9]{5})|((\\+31|0|0031)[1-9][0-9][-]?[1-9][0-9]{6}))|(((\\+31|0|0031)6){1}[-]?[1-9]{1}[0-9]{7})" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Email">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^@]+@[^\.]+\..+" />
+      		<xs:maxLength value="254"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Postcode">
+		<xs:restriction base="xs:string">
+      		<xs:whiteSpace value="collapse"/	
+			<xs:pattern value="[1-9][0-9]{3}[\s]?[A-Za-z]{2}" />
+      		<xs:minLength value="6"/>
+      		<xs:maxLength value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
