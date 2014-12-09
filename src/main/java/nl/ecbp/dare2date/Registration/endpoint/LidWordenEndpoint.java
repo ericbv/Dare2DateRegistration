@@ -13,14 +13,14 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import java.util.List;
 
 @Endpoint
-public class CalculatorEndpoint {
+public class LidWordenEndpoint {
     private static final String NAMESPACE_URI = "http://www.han.nl/calculator";
 
     private CalculationRepository calculationDao;
     private IMoviePrinter moviePrinter;
 
     @Autowired
-    public CalculatorEndpoint(CalculationRepository calculationDao, IMoviePrinter moviePrinter)
+    public LidWordenEndpoint(CalculationRepository calculationDao, IMoviePrinter moviePrinter)
     {
         this.calculationDao = calculationDao;
         this.moviePrinter = moviePrinter;
