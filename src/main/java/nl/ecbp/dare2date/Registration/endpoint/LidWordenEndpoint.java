@@ -118,9 +118,16 @@ public class LidWordenEndpoint {
 		try {
 			// Update phone number if given.
 			PhoneParameters newPhone = req.getInput().getPhoneCorrection();
-			if (newPhone.getPhoneNumber() != null) {
+			if (newPhone != null && newPhone.getPhoneNumber() != null) {
 				user.setTelefoonnummer(newPhone.getPhoneNumber());
 				userDao.save(user);
+			}
+			
+			// Delete old verification if present.
+			Verification verification = verificationDao.findByUserId(req.getInput()
+					.getUserId());
+			if(verification != null) {
+				verificationDao.delete(verification);
 			}
 
 			// Generate code and store it.
@@ -161,8 +168,8 @@ public class LidWordenEndpoint {
 			result.setSuccess(false);
 			result.setMessage("onbekende gebruiker");
 			return resp;
-		} else if (verification.getCode() != req.getInput()
-				.getVerificationCode()) {
+		} else if (!verification.getCode().equals(req.getInput()
+				.getVerificationCode())) {
 			result.setSuccess(false);
 			result.setMessage("Ongeldige code");
 		} else {
